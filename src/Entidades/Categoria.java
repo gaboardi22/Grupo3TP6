@@ -5,7 +5,7 @@ package Entidades;
  *
  * @author Grupo3
  */
-public enum Categorias {
+public enum Categoria {
     COMESTIBLE,
     LIMPIEZA,
     PERFUMERIA
