@@ -2,6 +2,9 @@
 package Vistas;
 
 import Entidades.Categoria;
+import Entidades.Producto;
+import static Vistas.Menu.listaProductos;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -9,12 +12,18 @@ import Entidades.Categoria;
  * @author Grupo3
  */
 public class GestionProducto extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form GestionProducto
-     */
+    private final DefaultTableModel modelo = new DefaultTableModel(){
+         @Override
+        public boolean isCellEditable(int fila, int columna){
+            return false;
+        }
+    };
+    
     public GestionProducto() {
         initComponents();
+        cargarCombo();
+        armarCabecedra();
+        cargarTabla();
     }
 
     /**
@@ -29,6 +38,8 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableProducto = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -40,13 +51,25 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
         jLabel2.setText("Filtro Por Categoria");
 
-        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxCategoria.setSelectedIndex(-1);
         jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxCategoriaActionPerformed(evt);
             }
         });
+
+        jTableProducto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,14 +78,18 @@ public class GestionProducto extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel2)
-                        .addGap(79, 79, 79)
-                        .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
-                        .addComponent(jLabel1)))
-                .addContainerGap(146, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel2)
+                                .addGap(40, 40, 40)
+                                .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +99,9 @@ public class GestionProducto extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 462, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 320, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,10 +116,35 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableProducto;
     // End of variables declaration//GEN-END:variables
 private void cargarCombo(){
-
+    for (Categoria cat : Categoria.values()) {
+        jComboBoxCategoria.addItem(cat.name());
+    }
 }
 
+private void armarCabecedra(){
+    modelo.addColumn("Codigo");
+    modelo.addColumn("Descripcion");
+    modelo.addColumn("Precio");
+    modelo.addColumn("Categoria");
+    modelo.addColumn("Stock");
+   jTableProducto.setModel(modelo);
+ }
 
+private void cargarTabla(){
+    modelo.setRowCount(0);
+    for (Producto producto : listaProductos) {
+        Object[] fila = {
+            producto.getCodigo(),
+            producto.getNombre(),
+            producto.getPrecio(),
+            producto.getCategoria(),
+            producto.getStock()         
+        };
+        modelo.addRow(fila);
+    }
+}
 }
