@@ -296,9 +296,9 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
 
-    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {                                              
         dispose();
-    }//GEN-LAST:event_jButtonCerrarActionPerformed
+    }                                             
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         int filaSeleccionada = jTableProducto.getSelectedRow();
@@ -319,7 +319,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
-        dispose();
+        
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     private void jComboBoxCategActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategActionPerformed

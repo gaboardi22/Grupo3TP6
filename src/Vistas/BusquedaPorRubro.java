@@ -21,6 +21,7 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     public BusquedaPorRubro() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -126,7 +127,7 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
                         x.getStock()
                     });
                 } else {
-                    if (jComboBoxCategoria.getSelectedItem().equals(Categoria.LIMPIEZA)) {
+                    if (jComboBoxCategoria.getSelectedItem().equals(Categoria.PERFUMERIA)) {
                         modelo.addRow(new Object[]{
                             x.getCodigo(),
                             x.getNombre(),
@@ -156,5 +157,10 @@ private void armarCabecera(){
     modelo.addColumn("Stock");
     jTableProductos.setModel(modelo);
 }
-
+private void cargarCombo() {
+        jComboBoxCategoria.addItem(null);
+        jComboBoxCategoria.addItem(Categoria.LIMPIEZA);
+        jComboBoxCategoria.addItem(Categoria.PERFUMERIA);
+        jComboBoxCategoria.addItem(Categoria.COMESTIBLE);
+    }
 }
