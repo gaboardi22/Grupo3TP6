@@ -89,7 +89,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Precio");
 
-        jLabel6.setText("Ruro");
+        jLabel6.setText("Rubro");
 
         jLabel7.setText("Stock");
 
@@ -162,6 +162,11 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         });
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
 
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -284,9 +289,29 @@ public class GestionProducto extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
+
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        int filaSeleccionada = jTableProducto.getSelectedRow();
+        if(filaSeleccionada  !=-1){
+            int codigoProducto = (int) modelo.getValueAt(filaSeleccionada, 0);
+            Producto productoAEliminar = null;
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigo() == codigoProducto) {
+                productoAEliminar = producto;
+                break;
+            }
+             if (productoAEliminar != null) {
+            listaProductos.remove(productoAEliminar);
+            cargarTabla();
+        }
+        }
+        }
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
