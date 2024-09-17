@@ -123,5 +123,9 @@ private void armarCabecera(){
     modelo.addColumn("Stock");
     jTableProductos.setModel(modelo);
 }
-
+private void cargarCombo(){
+    jComboBoxCategoria.addItem(Categoria.LIMPIEZA);
+    jComboBoxCategoria.addItem(Categoria.PERFUMERIA);
+    jComboBoxCategoria.addItem(Categoria.COMESTIBLE);
+}
 }

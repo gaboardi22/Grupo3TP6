@@ -134,6 +134,7 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
                     x.getCodigo(),
                     x.getNombre(),
                     x.getPrecio(),
+                    x.getCategoria(),
                     x.getStock()
                 });
             }
