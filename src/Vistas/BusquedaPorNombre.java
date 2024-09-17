@@ -44,7 +44,7 @@ public class BusquedaPorNombre extends javax.swing.JInternalFrame {
         jLabel1.setText("Listado Por Nombre");
 
         jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
-        jLabel2.setText("Ingrese dDescripcion");
+        jLabel2.setText("Ingrese Descripcion");
 
         jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -127,6 +127,7 @@ private void armarCabecera(){
     modelo.addColumn("Codigo");
     modelo.addColumn("Descripcion");
     modelo.addColumn("Precio");
+    modelo.addColumn("Categoria");
     modelo.addColumn("Stock");
     jTableProductos.setModel(modelo);
 }
