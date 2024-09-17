@@ -103,7 +103,12 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPorNombreActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaPorNombre bpn = new BusquedaPorNombre();
+        bpn.setVisible(true);
+        escritorio.add(bpn);
+        escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jMenuPorNombreActionPerformed
 
     private void jMenuPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPorPrecioActionPerformed
