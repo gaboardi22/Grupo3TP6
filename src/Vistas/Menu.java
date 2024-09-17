@@ -112,7 +112,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuPorNombreActionPerformed
 
     private void jMenuPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPorPrecioActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaPorPrecio bpp = new BusquedaPorPrecio();
+        bpp.setVisible(true);
+        escritorio.add(bpp);
+        escritorio.moveToFront(bpp);
     }//GEN-LAST:event_jMenuPorPrecioActionPerformed
 
     private void jMenuGestionProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGestionProductoActionPerformed
@@ -125,7 +130,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuGestionProductoActionPerformed
 
     private void jMenuPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPorRubroActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaPorRubro bpr = new BusquedaPorRubro();
+        bpr.setVisible(true);
+        escritorio.add(bpr);
+        escritorio.moveToFront(bpr);
     }//GEN-LAST:event_jMenuPorRubroActionPerformed
 
     /**
