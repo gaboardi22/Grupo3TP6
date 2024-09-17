@@ -22,6 +22,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     public GestionProducto() {
         initComponents();
         cargarCombo();
+        cargarCombo2();
         armarCabecedra();
         cargarTabla();
     }
@@ -99,6 +100,12 @@ public class GestionProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBoxCateg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCategActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -155,6 +162,11 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         });
 
         jButtonCerrar.setText("Cerrar");
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarActionPerformed(evt);
+            }
+        });
 
         jButtonEliminar.setText("Eliminar");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -283,26 +295,37 @@ public class GestionProducto extends javax.swing.JInternalFrame {
       Categoria categoria = (Categoria) jComboBoxCateg.getSelectedItem();
       Producto producto = new Producto(codigo, nombre, categoria, precio, stock);
       listaProductos.add(producto);
+      cargarTabla();
        
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         int filaSeleccionada = jTableProducto.getSelectedRow();
-        if(filaSeleccionada  !=-1){
+        if (filaSeleccionada != -1) {
             int codigoProducto = (int) modelo.getValueAt(filaSeleccionada, 0);
             Producto productoAEliminar = null;
-        for (Producto producto : listaProductos) {
-            if (producto.getCodigo() == codigoProducto) {
-                productoAEliminar = producto;
-                break;
+            for (Producto producto : listaProductos) {
+                if (producto.getCodigo() == codigoProducto) {
+                    productoAEliminar = producto;
+                    break;
+                }
+                if (productoAEliminar != null) {
+                    listaProductos.remove(productoAEliminar);
+                    cargarTabla();
+                }
             }
-             if (productoAEliminar != null) {
-            listaProductos.remove(productoAEliminar);
-            cargarTabla();
-        }
-        }
         }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
+
+    private void jComboBoxCategActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategActionPerformed
+     for (Categoria cat : Categoria.values()) {
+        jComboBoxCateg.addItem(cat);
+    }
+    }//GEN-LAST:event_jComboBoxCategActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -355,6 +378,11 @@ private void cargarTabla(){
             producto.getStock()         
         };
         modelo.addRow(fila);
+    }
+}
+private void cargarCombo2(){
+    for (Categoria cat : Categoria.values()) {
+        jComboBoxCateg.addItem(cat);
     }
 }
 }
