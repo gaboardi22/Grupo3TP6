@@ -1,6 +1,8 @@
 
 package Vistas;
 
+import Entidades.Producto;
+import static Vistas.Menu.listaProductos;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +49,12 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel2.setText("Entre $");
+
+        jTNumero2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTNumero2KeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("y");
 
@@ -115,6 +123,22 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
     private void jTNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNumero1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTNumero1ActionPerformed
+
+    private void jTNumero2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumero2KeyReleased
+        // TODO add your handling code here:
+        modelo.setRowCount(0);
+        for (Producto x : listaProductos) {
+            if(x.getPrecio()>= Integer.parseInt(jTNumero1.getText()) &&
+                    x.getPrecio()<= Integer.parseInt(jTNumero2.getText())){
+                modelo.addRow(new Object[]{
+                    x.getCodigo(),
+                    x.getNombre(),
+                    x.getPrecio(),
+                    x.getStock()
+                });
+            }
+        }
+    }//GEN-LAST:event_jTNumero2KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
