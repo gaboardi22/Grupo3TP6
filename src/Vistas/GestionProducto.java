@@ -255,7 +255,11 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
-        // TODO add your handling code here:
+        jTCodigo.setText("");
+        jTNombre.setText("");
+        jTPrecio.setText("");
+        jComboBoxCateg.setSelectedIndex(-1);
+        jSpinnerStock.setValue(0);
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jTPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPrecioActionPerformed
