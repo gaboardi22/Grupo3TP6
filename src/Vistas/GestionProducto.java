@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import Entidades.Categoria;
@@ -6,19 +5,19 @@ import Entidades.Producto;
 import static Vistas.Menu.listaProductos;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Grupo3
  */
 public class GestionProducto extends javax.swing.JInternalFrame {
-    private final DefaultTableModel modelo = new DefaultTableModel(){
-         @Override
-        public boolean isCellEditable(int fila, int columna){
+
+    private final DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int fila, int columna) {
             return false;
         }
     };
-    
+
     public GestionProducto() {
         initComponents();
         cargarCombo();
@@ -27,7 +26,6 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         cargarTabla();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -264,7 +262,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-       
+
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
@@ -288,15 +286,15 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-      int codigo = Integer.parseInt(jTCodigo.getText());
-      String nombre = jTNombre.getText();
-      int precio = Integer.parseInt(jTPrecio.getText());
-      int stock = (int) jSpinnerStock.getValue();
-      Categoria categoria = (Categoria) jComboBoxCateg.getSelectedItem();
-      Producto producto = new Producto(codigo, nombre, categoria, precio, stock);
-      listaProductos.add(producto);
-      cargarTabla();
-       
+        int codigo = Integer.parseInt(jTCodigo.getText());
+        String nombre = jTNombre.getText();
+        int precio = Integer.parseInt(jTPrecio.getText());
+        int stock = (int) jSpinnerStock.getValue();
+        Categoria categoria = (Categoria) jComboBoxCateg.getSelectedItem();
+        Producto producto = new Producto(codigo, nombre, categoria, precio, stock);
+        listaProductos.add(producto);
+        cargarTabla();
+
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
@@ -308,12 +306,12 @@ public class GestionProducto extends javax.swing.JInternalFrame {
                 if (producto.getCodigo() == codigoProducto) {
                     productoAEliminar = producto;
                     break;
-                }
-                if (productoAEliminar != null) {
+                }     
+            }
+            if (productoAEliminar != null) {
                     listaProductos.remove(productoAEliminar);
                     cargarTabla();
                 }
-            }
         }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
@@ -322,9 +320,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     private void jComboBoxCategActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategActionPerformed
-     for (Categoria cat : Categoria.values()) {
-        jComboBoxCateg.addItem(cat);
-    }
+
     }//GEN-LAST:event_jComboBoxCategActionPerformed
 
 
@@ -352,37 +348,38 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTPrecio;
     private javax.swing.JTable jTableProducto;
     // End of variables declaration//GEN-END:variables
-private void cargarCombo(){
-    for (Categoria cat : Categoria.values()) {
-        jComboBoxCategoria.addItem(cat);
+private void cargarCombo() {
+        for (Categoria cat : Categoria.values()) {
+            jComboBoxCategoria.addItem(cat);
+        }
     }
-}
 
-private void armarCabecedra(){
-    modelo.addColumn("Codigo");
-    modelo.addColumn("Descripcion");
-    modelo.addColumn("Precio");
-    modelo.addColumn("Categoria");
-    modelo.addColumn("Stock");
-   jTableProducto.setModel(modelo);
- }
+    private void armarCabecedra() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Stock");
+        jTableProducto.setModel(modelo);
+    }
 
-private void cargarTabla(){
-    modelo.setRowCount(0);
-    for (Producto producto : listaProductos) {
-         Object[] fila = {
-            producto.getCodigo(),
-            producto.getNombre(),
-            producto.getPrecio(),
-            producto.getCategoria(),
-            producto.getStock()         
-        };
-        modelo.addRow(fila);
+    private void cargarTabla() {
+        modelo.setRowCount(0);
+        for (Producto producto : listaProductos) {
+            Object[] fila = {
+                producto.getCodigo(),
+                producto.getNombre(),
+                producto.getPrecio(),
+                producto.getCategoria(),
+                producto.getStock()
+            };
+            modelo.addRow(fila);
+        }
     }
-}
-private void cargarCombo2(){
-    for (Categoria cat : Categoria.values()) {
-        jComboBoxCateg.addItem(cat);
+
+    private void cargarCombo2() {
+        for (Categoria cat : Categoria.values()) {
+            jComboBoxCateg.addItem(cat);
+        }
     }
-}
 }
