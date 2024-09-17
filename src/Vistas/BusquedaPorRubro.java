@@ -2,6 +2,8 @@
 package Vistas;
 
 import Entidades.Categoria;
+import Entidades.Producto;
+import static Vistas.Menu.listaProductos;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -104,7 +106,38 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-       
+        modelo.setRowCount(0);
+        for (Producto x : listaProductos) {
+            if (jComboBoxCategoria.getSelectedItem().equals(Categoria.COMESTIBLE)) {
+                modelo.addRow(new Object[]{
+                    x.getCodigo(),
+                    x.getNombre(),
+                    x.getPrecio(),
+                    x.getCategoria(),
+                    x.getStock()
+                });
+            } else {
+                if (jComboBoxCategoria.getSelectedItem().equals(Categoria.LIMPIEZA)) {
+                    modelo.addRow(new Object[]{
+                        x.getCodigo(),
+                        x.getNombre(),
+                        x.getPrecio(),
+                        x.getCategoria(),
+                        x.getStock()
+                    });
+                } else {
+                    if (jComboBoxCategoria.getSelectedItem().equals(Categoria.LIMPIEZA)) {
+                        modelo.addRow(new Object[]{
+                            x.getCodigo(),
+                            x.getNombre(),
+                            x.getPrecio(),
+                            x.getCategoria(),
+                            x.getStock()
+                        });
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
 
