@@ -1,7 +1,8 @@
-
 package Vistas;
 
 import Entidades.Categoria;
+import Entidades.Producto;
+import static Vistas.Menu.listaProductos;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -9,9 +10,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Grupo 3
  */
 public class BusquedaPorRubro extends javax.swing.JInternalFrame {
- private final DefaultTableModel modelo = new DefaultTableModel(){
+
+    private final DefaultTableModel modelo = new DefaultTableModel() {
         @Override
-        public boolean isCellEditable(int f, int c){
+        public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
@@ -19,6 +21,7 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     public BusquedaPorRubro() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -104,9 +107,39 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
-       
+        modelo.setRowCount(0);
+        for (Producto x : listaProductos) {
+            if (jComboBoxCategoria.getSelectedItem().equals(Categoria.COMESTIBLE)) {
+                modelo.addRow(new Object[]{
+                    x.getCodigo(),
+                    x.getNombre(),
+                    x.getPrecio(),
+                    x.getCategoria(),
+                    x.getStock()
+                });
+            } else {
+                if (jComboBoxCategoria.getSelectedItem().equals(Categoria.LIMPIEZA)) {
+                    modelo.addRow(new Object[]{
+                        x.getCodigo(),
+                        x.getNombre(),
+                        x.getPrecio(),
+                        x.getCategoria(),
+                        x.getStock()
+                    });
+                } else {
+                    if (jComboBoxCategoria.getSelectedItem().equals(Categoria.LIMPIEZA)) {
+                        modelo.addRow(new Object[]{
+                            x.getCodigo(),
+                            x.getNombre(),
+                            x.getPrecio(),
+                            x.getCategoria(),
+                            x.getStock()
+                        });
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Categoria> jComboBoxCategoria;
@@ -115,17 +148,19 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableProductos;
     // End of variables declaration//GEN-END:variables
-private void armarCabecera(){
-    modelo.addColumn("Codigo");
-    modelo.addColumn("Descripcion");
-    modelo.addColumn("Precio");
-    modelo.addColumn("Categoria");
-    modelo.addColumn("Stock");
-    jTableProductos.setModel(modelo);
-}
-private void cargarCombo(){
-    jComboBoxCategoria.addItem(Categoria.LIMPIEZA);
-    jComboBoxCategoria.addItem(Categoria.PERFUMERIA);
-    jComboBoxCategoria.addItem(Categoria.COMESTIBLE);
-}
+private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Stock");
+        jTableProductos.setModel(modelo);
+    }
+
+    private void cargarCombo() {
+        jComboBoxCategoria.addItem(null);
+        jComboBoxCategoria.addItem(Categoria.LIMPIEZA);
+        jComboBoxCategoria.addItem(Categoria.PERFUMERIA);
+        jComboBoxCategoria.addItem(Categoria.COMESTIBLE);
+    }
 }
