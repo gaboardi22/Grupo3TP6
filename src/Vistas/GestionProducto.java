@@ -88,7 +88,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Precio");
 
-        jLabel6.setText("Ruro");
+        jLabel6.setText("Rubro");
 
         jLabel7.setText("Stock");
 
@@ -381,3 +381,9 @@ private void cargarCombo() {
         }
     }
 }
+//private void cargarCombo() {
+//        jComboBoxCategoria.addItem(null);
+//        jComboBoxCategoria.addItem(Categoria.LIMPIEZA);
+//        jComboBoxCategoria.addItem(Categoria.PERFUMERIA);
+//        jComboBoxCategoria.addItem(Categoria.COMESTIBLE);
+//    }

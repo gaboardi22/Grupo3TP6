@@ -108,35 +108,16 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
         modelo.setRowCount(0);
-        for (Producto x : listaProductos) {
-            if (jComboBoxCategoria.getSelectedItem().equals(Categoria.COMESTIBLE)) {
+        Categoria categoriaSeleccionada = (Categoria) jComboBoxCategoria.getSelectedItem();
+        for (Producto producto : listaProductos) {
+            if (producto.getCategoria().equals(categoriaSeleccionada)) {
                 modelo.addRow(new Object[]{
-                    x.getCodigo(),
-                    x.getNombre(),
-                    x.getPrecio(),
-                    x.getCategoria(),
-                    x.getStock()
+                    producto.getCodigo(),
+                    producto.getNombre(),
+                    producto.getPrecio(),
+                    producto.getCategoria(),
+                    producto.getStock()
                 });
-            } else {
-                if (jComboBoxCategoria.getSelectedItem().equals(Categoria.LIMPIEZA)) {
-                    modelo.addRow(new Object[]{
-                        x.getCodigo(),
-                        x.getNombre(),
-                        x.getPrecio(),
-                        x.getCategoria(),
-                        x.getStock()
-                    });
-                } else {
-                    if (jComboBoxCategoria.getSelectedItem().equals(Categoria.PERFUMERIA)) {
-                        modelo.addRow(new Object[]{
-                            x.getCodigo(),
-                            x.getNombre(),
-                            x.getPrecio(),
-                            x.getCategoria(),
-                            x.getStock()
-                        });
-                    }
-                }
             }
         }
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed

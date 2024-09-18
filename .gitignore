@@ -12,3 +12,5 @@ build/classes/Vistas/GestionProducto$1.class
 build/built-jar.properties
 dist/Grupo3TP6.jar
 dist/README.TXT
+build/classes/Vistas/BusquedaPorNombre.form
+src/Vistas/GestionProducto.form
