@@ -275,23 +275,24 @@ public class GestionProducto extends javax.swing.JInternalFrame {
         if (filaSeleccionada != -1) {
             int codigo = Integer.parseInt(jTCodigo.getText());
             String nombre = jTNombre.getText();
-            int precio = Integer.parseInt(jTPrecio.getText());
+            double precio = Double.parseDouble(jTPrecio.getText());
             Categoria categoria = (Categoria) jComboBoxCategoria.getSelectedItem();
             int stock = (int) (jSpinnerStock.getValue());
 
             for (Producto prod : listaProductos) {
                 if (prod.getCodigo() == codigo) {
                     productoNuevo = prod;
+                    break;
                 }
             }
-        
-        if(productoNuevo != null){
-            productoNuevo.setNombre(nombre);
-            productoNuevo.setPrecio(precio);
-            productoNuevo.setCategoria(categoria);
-            productoNuevo.setStock(stock);
-            cargarTabla();
-        }
+            if (productoNuevo != null) {
+                //productoNuevo.setCodigo(codigo);
+                productoNuevo.setNombre(nombre);
+                productoNuevo.setPrecio(precio);
+                productoNuevo.setCategoria(categoria);
+                productoNuevo.setStock(stock);
+                cargarTabla();
+            }
         }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
