@@ -270,7 +270,29 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+        int filaSeleccionada = jTableProducto.getSelectedRow();
+        Producto productoNuevo = null;
+        if (filaSeleccionada != -1) {
+            int codigo = Integer.parseInt(jTCodigo.getText());
+            String nombre = jTNombre.getText();
+            int precio = Integer.parseInt(jTPrecio.getText());
+            Categoria categoria = (Categoria) jComboBoxCategoria.getSelectedItem();
+            int stock = (int) (jSpinnerStock.getValue());
+
+            for (Producto prod : listaProductos) {
+                if (prod.getCodigo() == codigo) {
+                    productoNuevo = prod;
+                }
+            }
         
+        if(productoNuevo != null){
+            productoNuevo.setNombre(nombre);
+            productoNuevo.setPrecio(precio);
+            productoNuevo.setCategoria(categoria);
+            productoNuevo.setStock(stock);
+            cargarTabla();
+        }
+        }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
@@ -401,9 +423,3 @@ private void cargarCombo() {
         }
     }
 }
-//private void cargarCombo() {
-//        jComboBoxCategoria.addItem(null);
-//        jComboBoxCategoria.addItem(Categoria.LIMPIEZA);
-//        jComboBoxCategoria.addItem(Categoria.PERFUMERIA);
-//        jComboBoxCategoria.addItem(Categoria.COMESTIBLE);
-//    }
