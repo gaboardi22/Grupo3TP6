@@ -80,6 +80,11 @@ public class GestionProducto extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProductoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableProducto);
 
         jLabel3.setText("Codigo");
@@ -214,7 +219,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jButtonBuscar)
                                     .addComponent(jButtonCerrar))))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +270,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
@@ -277,7 +282,7 @@ public class GestionProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
@@ -320,7 +325,22 @@ public class GestionProducto extends javax.swing.JInternalFrame {
        dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
+    private void jTableProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProductoMouseClicked
+       int filaSeleccionada = jTableProducto.getSelectedRow();
+    if (filaSeleccionada != -1) {
+        int codigo = (int) modelo.getValueAt(filaSeleccionada, 0);
+        String nombre = (String) modelo.getValueAt(filaSeleccionada, 1);
+        double precio = (double) modelo.getValueAt(filaSeleccionada, 2);
+        Categoria categoria = (Categoria) modelo.getValueAt(filaSeleccionada, 3);
+        int stock = (int) modelo.getValueAt(filaSeleccionada, 4);
 
+        jTCodigo.setText(codigo + "");
+        jTNombre.setText(nombre);
+        jTPrecio.setText(precio + "");
+        jComboBoxCateg.setSelectedItem(categoria);
+        jSpinnerStock.setValue(stock);
+    }
+    }//GEN-LAST:event_jTableProductoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualizar;

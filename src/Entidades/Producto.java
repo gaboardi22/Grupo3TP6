@@ -1,6 +1,8 @@
 
 package Entidades;
 
+import java.util.Objects;
+
 /**
  *
  * @author Grupo3
@@ -75,4 +77,31 @@ public class Producto implements Comparable<Producto>{
            return -1;
        }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + this.codigo;
+        hash = 37 * hash + Objects.hashCode(this.nombre);
+        hash = 37 * hash + Objects.hashCode(this.categoria);
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        hash = 37 * hash + this.stock;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return true;
+    }
+    
 }
