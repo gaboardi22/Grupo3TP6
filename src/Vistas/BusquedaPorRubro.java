@@ -17,7 +17,6 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
             return false;
         }
     };
-
     public BusquedaPorRubro() {
         initComponents();
         armarCabecera();
