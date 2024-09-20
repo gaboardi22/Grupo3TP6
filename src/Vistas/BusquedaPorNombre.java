@@ -2,6 +2,7 @@
 package Vistas;
 
 import Entidades.Producto;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -104,7 +105,12 @@ public class BusquedaPorNombre extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyReleased
-          borrarFilas(); 
+      try{
+          String textoIngresado = jTNombre.getText();
+        if (!textoIngresado.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+            throw new IllegalArgumentException("Solo se permiten letras en el campo de nombre.");
+        }
+        borrarFilas(); 
         for (Producto prod : Menu.listaProductos){
             if(prod.getNombre().startsWith(jTNombre.getText())){
                 modelo.addRow(new Object[]{
@@ -115,6 +121,16 @@ public class BusquedaPorNombre extends javax.swing.JInternalFrame {
                 });
             }
         }
+      } catch (IllegalArgumentException e) {
+        // Mostrar mensaje de error si se ingresan caracteres no permitidos
+        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        // Limpiar el campo si es necesario
+        jTNombre.setText("");
+    } catch (Exception e) {
+        // Captura cualquier otro tipo de error
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al filtrar los productos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+      
     }//GEN-LAST:event_jTNombreKeyReleased
 
 

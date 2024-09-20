@@ -2,8 +2,8 @@
 package Vistas;
 
 import Entidades.Producto;
-import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme;
+//import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
+//import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme;
 import java.util.TreeSet;
 
 /**
@@ -36,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuPorRubro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 500));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -144,13 +145,16 @@ public class Menu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    FlatVuesionIJTheme.setup();
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new Menu().setVisible(true);
-    });
-        FlatDarkFlatIJTheme.setup();
+        });
+//    FlatVuesionIJTheme.setup();
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new Menu().setVisible(true);
+//    });
+//        FlatDarkFlatIJTheme.setup();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

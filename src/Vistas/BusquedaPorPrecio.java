@@ -3,6 +3,7 @@ package Vistas;
 
 import Entidades.Producto;
 import static Vistas.Menu.listaProductos;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -125,6 +126,8 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTNumero1ActionPerformed
 
     private void jTNumero2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumero2KeyReleased
+        try{
+            
         modelo.setRowCount(0);
         for (Producto x : listaProductos) {
             if(x.getPrecio()>= Integer.parseInt(jTNumero1.getText()) &&
@@ -135,9 +138,13 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
                     x.getPrecio(),
                     x.getCategoria(),
                     x.getStock()
-                });
-            }
-        }
+                        });
+                    }
+                }
+             
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar solo numeros!");
+            } 
     }//GEN-LAST:event_jTNumero2KeyReleased
 
 
