@@ -2,8 +2,8 @@
 package Vistas;
 
 import Entidades.Producto;
-//import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
-//import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGradiantoMidnightBlueIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme;
 import java.util.TreeSet;
 
 /**
@@ -145,16 +145,16 @@ public class Menu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new Menu().setVisible(true);
-        });
-//    FlatVuesionIJTheme.setup();
-//
-//        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(() -> {
 //            new Menu().setVisible(true);
-//    });
-//        FlatDarkFlatIJTheme.setup();
+//        });
+    FlatVuesionIJTheme.setup();
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new Menu().setVisible(true);
+    });
+        FlatGradiantoMidnightBlueIJTheme.setup();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

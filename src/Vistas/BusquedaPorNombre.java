@@ -121,13 +121,9 @@ public class BusquedaPorNombre extends javax.swing.JInternalFrame {
                 });
             }
         }
-      } catch (IllegalArgumentException e) {
-        // Mostrar mensaje de error si se ingresan caracteres no permitidos
-        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        // Limpiar el campo si es necesario
+      } catch (IllegalArgumentException e) {JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         jTNombre.setText("");
     } catch (Exception e) {
-        // Captura cualquier otro tipo de error
         JOptionPane.showMessageDialog(this, "Ocurrió un error al filtrar los productos.", "Error", JOptionPane.ERROR_MESSAGE);
     }
       
